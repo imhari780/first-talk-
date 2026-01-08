@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mic Test</title>
+</head>
+<body>
+  <h2>Microphone Test</h2>
+
+  <button onclick="startMic()">Start Mic</button>
+
+  <script>
+    function startMic() {
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(() => alert("✅ MIC WORKING"))
+        .catch(() => alert("❌ MIC NOT WORKING"));
+    }
+  </script>
+</body>
+</html>
