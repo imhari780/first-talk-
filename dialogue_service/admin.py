@@ -1,3 +1,12 @@
 from django.contrib import admin
+from .models import DialogueSession, DialogueMessage
 
-# Register your models here.
+
+@admin.register(DialogueSession)
+class DialogueSessionAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(DialogueMessage)
+class DialogueMessageAdmin(admin.ModelAdmin):
+    pass

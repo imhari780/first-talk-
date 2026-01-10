@@ -28,5 +28,8 @@ urlpatterns = [
     # SERVICES
     path('auth/', include('auth_service.urls')),
     path('', include('room_gateway.urls')),
+    path("api/", include("chat.urls")),
+     path("api/", include("chat_service.urls")),
+
 ]
 

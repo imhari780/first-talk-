@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 ]
 
 
+
+
 # ===============================
 # MIDDLEWARE
 # ===============================
@@ -156,3 +158,10 @@ SIMPLE_JWT = {
     "USER_ID_CLAIM": "user_id",
 }
 
+ASGI_APPLICATION = "core.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    }
+}

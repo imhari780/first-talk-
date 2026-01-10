@@ -13,6 +13,7 @@ urlpatterns = [
     path('', include('dialogue_service.urls')),
     path('api/', include('audio_broadcast.urls')),
     path("response-engine/", include("response_engine.urls")),
+    path('api/', include('chat_service.urls')),
     
     
     
