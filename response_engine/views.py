@@ -1,11 +1,10 @@
-from django.shortcuts import render
-
-# Create your views here.
 import json
 from django.http import JsonResponse
+
 from django.views.decorators.csrf import csrf_exempt
 from .schemas import ResponseEngineRequest
 from .services import generate_response
+
 
 @csrf_exempt
 def response_engine(request):
@@ -19,7 +18,7 @@ def response_engine(request):
         result = generate_response(
             room_type=data.room_type,
             recent_interactions=data.recent_interactions,
-            semantic_context=data.semantic_context
+            semantic_context=data.semantic_context,
         )
 
         return JsonResponse(result, status=200)

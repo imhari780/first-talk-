@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 
+
 class Message(models.Model):
     message_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     room_id = models.CharField(max_length=100)

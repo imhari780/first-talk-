@@ -1,9 +1,9 @@
-from django.db import models
-
 # Create your models here.
 import uuid
+
 from django.db import models
 from django.utils import timezone
+
 
 class AudioSession(models.Model):
     session_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

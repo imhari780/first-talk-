@@ -1,10 +1,11 @@
-from django.shortcuts import render
-
 # Create your views here.
 import uuid
+
+
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
+
 from .models import ModerationEvent
 
 
@@ -23,7 +24,7 @@ def is_moderator(request):
 # --------------------------------------------------
 # MUTE USER
 # --------------------------------------------------
-@api_view(['POST'])
+@api_view(["POST"])
 def mute_user(request):
     if not is_moderator(request):
         return Response(status=status.HTTP_403_FORBIDDEN)
@@ -34,9 +35,9 @@ def mute_user(request):
 
     ModerationEvent.objects.create(
         moderator_id=request.user.id,
-        target_type='user',
+        target_type="user",
         target_id=uuid.UUID(target_user_id),
-        action='mute'
+        action="mute",
     )
 
     # Silent operation – no UI feedback
@@ -46,7 +47,7 @@ def mute_user(request):
 # --------------------------------------------------
 # SOFT DELETE MESSAGE
 # --------------------------------------------------
-@api_view(['POST'])
+@api_view(["POST"])
 def soft_delete_message(request):
     if not is_moderator(request):
         return Response(status=status.HTTP_403_FORBIDDEN)
@@ -57,9 +58,9 @@ def soft_delete_message(request):
 
     ModerationEvent.objects.create(
         moderator_id=request.user.id,
-        target_type='message',
+        target_type="message",
         target_id=uuid.UUID(message_id),
-        action='soft_delete'
+        action="soft_delete",
     )
 
     # Chat Service will silently update visibility
@@ -69,7 +70,7 @@ def soft_delete_message(request):
 # --------------------------------------------------
 # TEMPORARY BLOCK USER
 # --------------------------------------------------
-@api_view(['POST'])
+@api_view(["POST"])
 def temp_block_user(request):
     if not is_moderator(request):
         return Response(status=status.HTTP_403_FORBIDDEN)
@@ -80,9 +81,9 @@ def temp_block_user(request):
 
     ModerationEvent.objects.create(
         moderator_id=request.user.id,
-        target_type='user',
+        target_type="user",
         target_id=uuid.UUID(target_user_id),
-        action='temp_block'
+        action="temp_block",
     )
 
     return Response(status=status.HTTP_204_NO_CONTENT)

@@ -1,13 +1,13 @@
-from django.db import models
 from django.conf import settings
+from django.db import models
 
 
 class Room(models.Model):
     ROOM_TYPES = [
-        ('PUBLIC_CHAT', 'Public Chat'),
-        ('AUDIO_BROADCAST', 'Audio Broadcast'),
-        ('PRIVATE_DIALOGUE', 'Private Dialogue'),
-        ('OPEN_CHAT', 'Open Chat'),
+        ("PUBLIC_CHAT", "Public Chat"),
+        ("AUDIO_BROADCAST", "Audio Broadcast"),
+        ("PRIVATE_DIALOGUE", "Private Dialogue"),
+        ("OPEN_CHAT", "Open Chat"),
     ]
 
     name = models.CharField(max_length=100)
@@ -20,10 +20,7 @@ class Room(models.Model):
 
 
 class RoomMember(models.Model):
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
-    )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     joined_at = models.DateTimeField(auto_now_add=True)
     left_at = models.DateTimeField(null=True, blank=True)

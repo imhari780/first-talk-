@@ -1,19 +1,19 @@
-from django.db import models
-
 # Create your models here.
 import uuid
+
 from django.db import models
+
 
 class ModerationEvent(models.Model):
     TARGET_CHOICES = (
-        ('message', 'Message'),
-        ('user', 'User'),
+        ("message", "Message"),
+        ("user", "User"),
     )
 
     ACTION_CHOICES = (
-        ('mute', 'Mute'),
-        ('soft_delete', 'Soft Delete'),
-        ('temp_block', 'Temporary Block'),
+        ("mute", "Mute"),
+        ("soft_delete", "Soft Delete"),
+        ("temp_block", "Temporary Block"),
     )
 
     event_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

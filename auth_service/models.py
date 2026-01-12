@@ -1,26 +1,19 @@
 import uuid
-from django.db import models
+
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 
 class User(AbstractUser):
     ROLE_CHOICES = (
-        ('participant', 'Participant'),
-        ('moderator', 'Moderator'),
+        ("participant", "Participant"),
+        ("moderator", "Moderator"),
     )
 
     # UUID as public identity
-    user_id = models.UUIDField(
-        default=uuid.uuid4,
-        editable=False,
-        unique=True
-    )
+    user_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
-    role = models.CharField(
-        max_length=32,
-        choices=ROLE_CHOICES,
-        default='participant'
-    )
+    role = models.CharField(max_length=32, choices=ROLE_CHOICES, default="participant")
 
     created_at = models.DateTimeField(auto_now_add=True)
 

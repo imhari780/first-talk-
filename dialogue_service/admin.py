@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import DialogueSession, DialogueMessage
+
+from .models import DialogueMessage, DialogueSession
 
 
 @admin.register(DialogueSession)

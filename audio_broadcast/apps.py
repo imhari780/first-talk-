@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class AudioBroadcastConfig(AppConfig):
-    name = 'audio_broadcast'
+    name = "audio_broadcast"

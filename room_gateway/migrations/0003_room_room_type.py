@@ -6,14 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('room_gateway', '0002_alter_roommember_user'),
+        ("room_gateway", "0002_alter_roommember_user"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='room',
-            name='room_type',
-            field=models.CharField(choices=[('PUBLIC_CHAT', 'Public Chat'), ('AUDIO_BROADCAST', 'Audio Broadcast'), ('PRIVATE_DIALOGUE', 'Private Dialogue'), ('OPEN_CHAT', 'Open Chat')], default='PUBLIC_CHAT', max_length=20),
+            model_name="room",
+            name="room_type",
+            field=models.CharField(
+                choices=[
+                    ("PUBLIC_CHAT", "Public Chat"),
+                    ("AUDIO_BROADCAST", "Audio Broadcast"),
+                    ("PRIVATE_DIALOGUE", "Private Dialogue"),
+                    ("OPEN_CHAT", "Open Chat"),
+                ],
+                default="PUBLIC_CHAT",
+                max_length=20,
+            ),
             preserve_default=False,
         ),
     ]

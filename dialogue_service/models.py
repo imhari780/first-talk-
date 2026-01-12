@@ -1,9 +1,8 @@
-from django.db import models
-
 # Create your models here.
 import uuid
-from django.db import models
+
 from django.conf import settings
+from django.db import models
 
 User = settings.AUTH_USER_MODEL
 
@@ -20,12 +19,14 @@ class DialogueSession(models.Model):
 
 class DialogueMessage(models.Model):
     SENDER_CHOICES = (
-        ('user', 'User'),
-        ('system', 'System'),
+        ("user", "User"),
+        ("system", "System"),
     )
 
     message_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    session = models.ForeignKey(DialogueSession, on_delete=models.CASCADE, related_name='messages')
+    session = models.ForeignKey(
+        DialogueSession, on_delete=models.CASCADE, related_name="messages"
+    )
     sender_type = models.CharField(max_length=16, choices=SENDER_CHOICES)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

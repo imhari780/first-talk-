@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from . import models
 
 # Automatically register all models in this app
