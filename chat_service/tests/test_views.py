@@ -1,3 +1,20 @@
+# from django.test import TestCase
+# from django.urls import reverse
+
+
+# class ChatViewTest(TestCase):
+
+#     def test_dummy_view_test(self):
+#         """
+#         This test only checks that Django test runner works
+#         and does not break due to URL issues.
+#         """
+#         response = self.client.get("/")
+
+#         # Root URL irundhaal 200, illatti 404
+#         self.assertIn(response.status_code, [200, 404])
+
+
 # import pytest
 # from django.urls import reverse
 # from rest_framework.test import APIClient
@@ -32,6 +49,7 @@ from rest_framework.test import APIClient
 from chat_service.models import Message
 
 
+@pytest.mark.integration
 @pytest.mark.django_db
 def test_send_message_api():
     client = APIClient()
@@ -62,6 +80,7 @@ def test_send_message_api():
     assert message.content == "Hello machan"
 
 
+@pytest.mark.integration
 @pytest.mark.django_db
 def test_send_message_api_invalid_data():
     client = APIClient()
@@ -83,6 +102,7 @@ def test_send_message_api_invalid_data():
     assert "content" in response.data  # Error message should mention missing content
 
 
+@pytest.mark.integration
 @pytest.mark.django_db
 def test_delete_message_api():
     client = APIClient()

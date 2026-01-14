@@ -1,12 +1,26 @@
-; [flake8]
-; exclude =
-;     migrations,
-;     __pycache__,
-;     .venv,
-;     venv
-; max-line-length = 88
-; [flake8]
-; max-line-length = 88
 [flake8]
+
+exclude =
+    .venv,
+    venv,
+    env,
+    __pycache__,
+    migrations,
+    static,
+    media,
+    node_modules
+
 max-line-length = 88
-extend-ignore = E501
+
+# Django + Black compatible ignores
+extend-ignore =
+    E203,
+    W503,
+    E501
+
+
+per-file-ignores =
+    core/settings.py:F401,F403
+    core/settings_staging.py:F401,F403
+    core/settings_dev.py:F401,F403
+    core/settings_prod.py:F401,F403
